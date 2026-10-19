@@ -911,9 +911,9 @@ html[dir=rtl] .chg-loc::before{content:"→"}
 <script>
 const LANG=document.documentElement.lang==='en'?'en':'ru';
 const L=(ru,en)=>LANG==='en'?en:ru;
-const CAT={wh:['Промышленный, склад до 13 м','Industrial, warehouse up to 13 m'],ind:['Промышленный участок','Industrial plot'],com:['Коммерческий участок','Commercial plot'],indcom:['Промышленно-коммерческий','Industrial-commercial'],comoff:['Коммерция, офисы, жильё','Commercial, offices & residential'],staff:['Жильё для персонала','Staff housing'],rc:['Жилой дом с магазинами G+2','Residential-commercial G+2'],ri:['Жилой доходный дом G+2','Residential investment G+2'],th:['Таунхаус G+2','Townhouse G+2'],rent:['Забронирован','Reserved'],school:['Школа','School'],other:['Не продаётся','Not for sale'],sold:['Продан','Sold']};
+/* 19.10 */const CAT={mix:['Склад, производство, шоурум, офисы','Warehouse, manufacturing, showroom, offices'],shed:['Складской участок','Warehouse plot'],wh:['Промышленный, склад до 13 м','Industrial, warehouse up to 13 m'],ind:['Промышленный участок','Industrial plot'],com:['Коммерческий участок','Commercial plot'],indcom:['Промышленно-коммерческий','Industrial-commercial'],comoff:['Коммерция, офисы, жильё','Commercial, offices & residential'],staff:['Жильё для персонала','Staff housing'],rc:['Жилой дом с магазинами G+2','Residential-commercial G+2'],ri:['Жилой доходный дом G+2','Residential investment G+2'],th:['Таунхаус G+2','Townhouse G+2'],rent:['Забронирован','Reserved'],school:['Школа','School'],other:['Не продаётся','Not for sale'],sold:['Продан','Sold']};
 const PURP={wh:['Склады','Warehouses'],prod:['Производство','Manufacturing'],labour:['Жильё для рабочих','Labour camp'],office:['Офисы','Offices'],show:['Шоурумы','Showrooms'],com:['Магазины и коммерция','Retail & commercial'],home:['Жильё','Residential']};
-const CATP={wh:['wh','prod','labour','office'],ind:['prod','wh','labour'],com:['com','show','office'],indcom:['prod','wh','show','com'],comoff:['com','office','home'],staff:['labour'],rc:['home','com'],ri:['home'],th:['home']};
+const CATP={mix:['wh','prod','show','com','office','labour'],shed:['wh'],wh:['wh','labour','office'],ind:['prod','wh','labour'],com:['com','show','office'],indcom:['prod','wh','show','com'],comoff:['com','office','home'],staff:['labour'],rc:['home','com'],ri:['home'],th:['home']};
 const purpOf=p=>CATP[p.cat]||[];
 const pl=k=>PURP[k][LANG==='en'?1:0];
 const catLabel=c=>(CAT[c]||CAT.other)[LANG==='en'?1:0];
@@ -1032,7 +1032,7 @@ function printOffer(p){
 
 /* карта логистики: расстояния и время по дороге (OSRM, 13.10.2026) от выбранной локации */
 const LG_DIST={"qasimiya": {"downtown": [63, 53], "abudhabi": [182, 124], "jebelali": [81, 72], "khalid": [73, 64], "khorfakkan": [110, 93], "shj_airport": [62, 53], "dwc": [74, 72]}, "sajaa": {"downtown": [56, 47], "abudhabi": [190, 125], "jebelali": [87, 71], "khalid": [41, 39], "khorfakkan": [108, 85], "shj_airport": [21, 20], "dwc": [82, 70]}, "arqoub": {"downtown": [54, 44], "abudhabi": [191, 125], "jebelali": [86, 69], "khalid": [37, 35], "khorfakkan": [110, 86], "shj_airport": [24, 21], "dwc": [84, 71]}, "basatin": {"downtown": [47, 42], "abudhabi": [180, 120], "jebelali": [77, 66], "khalid": [39, 35], "khorfakkan": [96, 77], "shj_airport": [28, 25], "dwc": [72, 65]}, "bataeh": {"downtown": [60, 49], "abudhabi": [193, 127], "jebelali": [90, 73], "khalid": [45, 39], "khorfakkan": [82, 68], "shj_airport": [25, 20], "dwc": [85, 72]}};
-const LG_SRC={qasimiya3:'qasimiya',qasimiya1:'qasimiya',qasimiya2:'qasimiya',sajaaline:'sajaa',sajaamodel:'sajaa',arqoub:'arqoub',basatin:'basatin',bataeh:'bataeh'};
+const LG_SRC={qasimiya3:'qasimiya',qasimiya1:'qasimiya',qasimiya2:'qasimiya',sajaaline:'sajaa',sajaamodel:'sajaa',sajaar4:'sajaa',arqoub:'arqoub',basatin:'basatin',bataeh:'bataeh'};
 const LG_PT={qasimiya:[24.9610,55.6771],sajaa:[25.3743,55.6299],arqoub:[25.4195,55.6261],basatin:[25.2014,55.6512],bataeh:[25.2736,55.7315]};
 const LG_DST=[
  ['downtown',25.1972,55.2744,'b',L('Даунтаун Дубай','Downtown Dubai')],
@@ -1070,6 +1070,7 @@ const LOC={qasimiya3:['Al Qasimia City, Al Madam, Sharjah',L('Шарджа, ра
  qasimiya2:['Al Qasimia City, Al Madam, Sharjah',L('Аль-Касимия Сити, Аль-Мадам, у Al Qasimia Road','Al Qasimia City, Al Madam, on Al Qasimia Road')],
  sajaaline:["Al Saja'a Industrial Oasis, Sharjah",L('Шарджа, промзона Аль-Саджа','Al Saja’a industrial area, Sharjah')],
  sajaamodel:["Al Saja'a Industrial Oasis, Sharjah",L('Шарджа, промзона Аль-Саджа, выезд на Emirates Road','Al Saja’a industrial area, Sharjah, access to Emirates Road')],
+ sajaar4:["Al Saja'a Industrial Area, Sharjah",L('Шарджа, промзона Аль-Саджа, между Emirates Road и трассой на Al Dhaid. Цена уже с регистрацией и оформлением','Al Saja’a industrial area, Sharjah, between Emirates Road and Al Dhaid Road. Price includes registration and title fees')],
  arqoub:['Arqoub Industrial, Sharjah',L('Шарджа, у Sheikh Mohammed bin Zayed Road и Al Hamriya Road','Sharjah, by Sheikh Mohammed bin Zayed Road and Al Hamriya Road')],
  basatin:['Basatin Al Belaida Project, Sharjah',L('Шарджа, район Аль-Булайда, выезд на Emirates Road','Al Bulaida, Sharjah, access to Emirates Road')],
  bataeh:['Al Bataeh, Sharjah',L('Шарджа, Аль-Батаих, у трассы Al Dhaid, вид на горы','Al Bataeh, Sharjah, near the Al Dhaid road, mountain views')]};
@@ -1103,7 +1104,7 @@ function loadProject(key){
   const fit=vp.clientWidth/(vp.clientHeight*VB.w/VB.h); const z=Math.max(1,fit)*(PRJ.kind==='res'||PLOTS.length>500?2.4:1); setZoom(z,false);
   pick(s.id); renderIntro(); requestAnimationFrame(()=>centerOn(BY[s.id],false));
 }
-const ORDER=['qasimiya1','qasimiya2','qasimiya3','sajaaline','sajaamodel','arqoub','basatin','bataeh']; PROJECTS.sort((a,b)=>ORDER.indexOf(a.key)-ORDER.indexOf(b.key));
+const ORDER=['qasimiya1','qasimiya2','qasimiya3','sajaaline','sajaamodel','sajaar4','arqoub','basatin','bataeh']; PROJECTS.sort((a,b)=>ORDER.indexOf(a.key)-ORDER.indexOf(b.key));
 
 /* 14.10d: фильтр цены, «Найдено N», выбор подходящего участка, подсказка */
 const pl3=(n,a,b,c)=>{const m=n%10,h=n%100; return m===1&&h!==11?a:m>=2&&m<=4&&(h<12||h>14)?b:c;};
@@ -1301,7 +1302,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
 /* инфраструктура: вкладки сами листаются каждые 7 секунд, пока посетитель не нажмёт */
 const INF=[
  {h:'Power, water and gas to every plot',p:'Water and power supplied by Etihad WE. Substations sit inside each block, cables and pipes run along the roads.',li:[['Power','200 kVA, more for a fee'],['Water and firefighting','300 GPM pumps'],['Gas','connected to the location']]},
- {h:'A 13 m warehouse with an office',p:'Warehouses with mezzanine offices, manufacturing and staff accommodation are permitted. Construction can be ordered turnkey.',li:[['Warehouse height','13 m, +2 m for a fee'],['Plot coverage','about 70%'],['Turnkey build','see the returns above']]},
+ {h:'A 13 m warehouse with an office',p:'Warehouses with mezzanine offices and staff accommodation are permitted. Manufacturing and showrooms are allowed on some plots only - see «You can build» on the plot card. Construction can be ordered turnkey.',li:[['Warehouse height','13 m, +2 m for a fee'],['Plot coverage','about 70%'],['Turnkey build','see the returns above']]},
  {h:'Close to highways and ports',p:'Approximate road distances. Internal roads are 21–24 m wide, trucks pass easily.',li:[['Dubai','≈ 60 km'],['Jebel Ali Port','≈ 90 km'],['Ajman Port','≈ 65 km'],['Khorfakkan Port','≈ 95 km']]}];
 let infI=0, infAuto=false, infT=null;
 function showInf(i,user){
