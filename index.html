@@ -496,7 +496,7 @@ form input[readonly]{background:var(--green-soft);border-color:transparent;color
 }
 
 /* 13.10: значки контактов, карта логистики */
-@media (max-width:560px){.logo{font-size:0!important;gap:0}.nav a[href$=".html"]{font-size:12.5px}.nav{gap:8px!important}}
+@media (max-width:560px){.logo{font-size:0!important;gap:0}.nav a[href$=".html"],.nav .nav-blog{font-size:12.5px}.nav{gap:8px!important}} @media (max-width:860px){.nav .wa-top .hide-m{display:none}} @media (max-width:365px){.nav .nav-blog{display:none}}
 .contacts a{display:inline-flex;align-items:center;gap:10px;padding:10px 20px 10px 10px;font-size:16px;box-shadow:0 8px 22px rgba(0,0,0,.18)}
 .contacts a .ic{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#fff;flex:none}
 .contacts a .ic svg{width:21px;height:21px}
@@ -741,7 +741,7 @@ html[dir=rtl] .chg-loc::before{content:"→"}
 <header class="hdr gutter" id="hdr">
   <a class="logo" href="#top"><span class="flag" aria-hidden="true"></span>ЗЕМЛЯ В ОАЭ</a>
   <nav class="nav">
-    <a href="en.html">EN</a><a href="ar.html">AR</a>
+    <a class="nav-blog" href="blog/">Блог</a><a href="en.html">EN</a><a href="ar.html">AR</a>
     <div class="cur" role="group" aria-label="Валюта"><button id="cur-aed" aria-pressed="true">AED</button><button id="cur-usd" aria-pressed="false">USD</button></div><div class="cur hide-m" role="group" aria-label="Единицы площади"><button id="u-m" aria-pressed="true">м²</button><button id="u-ft" aria-pressed="false">фут²</button></div>
     <a class="wa-top" href="https://wa.me/971558722035" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span class="hide-m">+971 55 872 2035</span></a>
     <a class="btn cta" href="#lead">Заявка</a>
@@ -887,7 +887,7 @@ html[dir=rtl] .chg-loc::before{content:"→"}
 <footer class="sitefoot"><div class="gutter">
   <div class="sf-grid">
     <div><div class="sf-logo"><span class="flag" aria-hidden="true"></span>ЗЕМЛЯ В ОАЭ</div><p>Земельные участки в Шардже под склады, производство и жильё. Полная собственность (freehold) для иностранцев.</p></div>
-    <div><h4>Разделы</h4><ul><li><a href="#projects">Локации</a></li><li><a href="#plan">Участки</a></li><li><a href="#team">Показ на месте</a></li><li><a href="#lead">Заявка</a></li></ul></div>
+    <div><h4>Разделы</h4><ul><li><a href="#projects">Локации</a></li><li><a href="#plan">Участки</a></li><li><a href="blog/">Блог</a></li><li><a href="#team">Показ на месте</a></li><li><a href="#lead">Заявка</a></li></ul></div>
     <div><h4>Документы</h4><ul><li><a href="privacy.html">Политика конфиденциальности</a></li><li><a href="privacy.html#terms">Условия использования</a></li></ul></div>
   </div>
   <div class="sf-bot"><span>© 2026 Земля в ОАЭ. Все права защищены.</span><span>Цены и условия ориентировочные и не являются публичной офертой. 1 USD = 3,6725 AED</span></div>
