@@ -145,3 +145,8 @@ td:last-child,thead th:last-child{color:var(--green-ink);font-weight:700}
 }
 @media (max-width:300px){.nav{gap:8px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.art blockquote{margin:28px 0;padding:4px 0 4px 22px;border-left:4px solid #d71920}
+.art blockquote p{font-size:1.25em;line-height:1.45;font-weight:700;margin:0}
+.art blockquote cite{display:block;margin-top:8px;font-style:normal;font-size:.85em;color:#767676}
+.art figure.anim video{display:block;width:100%;height:auto;border-radius:var(--r)}
